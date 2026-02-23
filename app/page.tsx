@@ -1,7 +1,7 @@
 import Link from "next/link";
 import HomeAudioPlayer from "./components/HomeAudioPlayer";
 
-const VIDEO_URL = "https://pixiomedia.nyc3.digitaloceanspaces.com/uploads/1771880459132-FIX%20MOUTH_iris2.mp4";
+const VIDEO_URL = "https://pixiomedia.nyc3.digitaloceanspaces.com/uploads/1771885853233-FINAL%20NICK_iris3.mp4";
 
 export default function HomePage() {
   return (
