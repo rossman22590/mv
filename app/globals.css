@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --studio-black: #050505;
+    --studio-white: #fafafa;
+    --studio-muted: #737373;
+    --studio-edge: #1a1a1a;
+    --studio-highlight: #e5e5e5;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+    background-color: var(--studio-black);
+    color: var(--studio-white);
+  }
+
+  /* Subtle grain overlay for depth */
+  .studio-grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+  }
+}
+
+/* Stagger fade-in for grid items */
+@keyframes studio-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.studio-stagger > * {
+  animation: studio-fade-up 0.6s ease-out backwards;
+}
+
+.studio-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.studio-stagger > *:nth-child(2) { animation-delay: 0.1s; }
+.studio-stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.studio-stagger > *:nth-child(4) { animation-delay: 0.2s; }
+.studio-stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.studio-stagger > *:nth-child(6) { animation-delay: 0.3s; }
+.studio-stagger > *:nth-child(7) { animation-delay: 0.35s; }
+.studio-stagger > *:nth-child(8) { animation-delay: 0.4s; }
+.studio-stagger > *:nth-child(n+9) { animation-delay: 0.45s; }
+
+/* Homepage media players - consistent accent */
+.home-video {
+  @apply w-full aspect-video bg-black;
+}
+.home-video::-webkit-media-controls-panel {
+  background: linear-gradient(transparent, rgba(5, 5, 5, 0.8));
+}
+.home-audio-bar {
+  background-color: var(--studio-edge);
+}
+.home-audio-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--studio-white);
+  cursor: pointer;
+}
+.home-audio-bar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--studio-white);
+  cursor: pointer;
+  border: 0;
+}
